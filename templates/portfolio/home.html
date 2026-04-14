@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Мои работы</h1>
+{% for cat_name, works in works_by_cat.items %}
+    <h2>{{ cat_name }}</h2>
+    <div style="display: flex; flex-wrap: wrap;">
+        {% for work in works %}
+            <div style="margin: 10px;">
+                <img src="{{ work.image.url }}" width="200">
+                <p>{{ work.title }}</p>
+            </div>
+        {% empty %}
+            <p>Нет работ в этой категории</p>
+        {% endfor %}
+    </div>
+{% endfor %}
+{% endblock %}
